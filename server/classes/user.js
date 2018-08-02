@@ -3,10 +3,11 @@ class User {
         this.persons = []
     }
 
-    addPerson(id, name) {
+    addPerson(id, name, channel) {
         let person = {
             id,
-            name
+            name,
+            channel
         }
 
         this.persons.push(person)
@@ -18,15 +19,15 @@ class User {
         return this.persons.filter((person) => person.id === id)[0]
     }
 
-    addPersons() {
+    getPersons() {
         return this.persons
     }
 
-    getPersonsPerRoom(room) {
-
+    getPersonsPerChannel(channel) {
+        return this.persons.filter(person => person.channel === channel)
     }
 
-    deletePerson() {
+    deletePerson(id) {
 
         let person = this.getPerson(id)
         this.persons = this.persons.filter((person) => person.id !== id)
