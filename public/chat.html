@@ -6,16 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <title>Chat</title>
 </head>
 <body>
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo center">Sala de mensajes</a>
+
+    <div class="main">
+        <div class="navbar-fixed">
+            <nav class="header">
+                <div class="nav-wrapper">
+                    <span class="brand-logo padding">Sala de chat</span>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger">
+                        <span class="new badge blue" data-badge-caption="">115</span>
+                        <i class="material-icons black-text">group</i>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="padding">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Card Title</span>
+                    
+                </div>
+                <div class="card-action">
+                    <!-- <a href="#">This is a link</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <ul id="slide-out" class="sidenav sidenav-fixed contacts">
+        <nav class="transparent">
+            <div class="nav-wrapper padding">
+                <span class="brand-logo padding">Contactos</span>
+                <a href="#" class="show-on-medium-and-down hide-on-med-and-up sidenav-close">
+                    <i class="material-icons white-text">arrow_back</i>
+                </a>
             </div>
         </nav>
+        <li>
+        </li>
+    </ul>
+    
+
+    <div class="message">
+
     </div>
     
     
@@ -43,6 +81,7 @@
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script src="socket.io/socket.io.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/socket.js"></script>
 </body>
 </html>

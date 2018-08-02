@@ -1,0 +1,64 @@
+.box-center {
+    margin: 40% auto !important;
+}
+
+.fill {
+    width: 100%;
+}
+
+.header {
+    background-color: white;
+    color: #125688 !important;
+}
+
+span.badge {
+    border-radius: 50% !important;
+    min-width: 0 !important;
+}
+
+.brand-logo {
+    color: #125688 !important;
+}
+
+.transparent {
+    opacity: 1 !important;
+}
+
+.transparent .brand-logo {
+    color: #ffffff !important;
+}
+
+.contacts {
+    background-color: #458dfa !important;
+    color: white !important;
+}
+
+.contacts, .chat {
+    position: fixed;
+    height: 100vh;
+}
+
+.card-content {
+    height: 88vh;
+}
+
+/* .row  .col {
+    padding: 0 !important;
+} */
+
+.padding {
+    padding: 0 .75rem !important;
+}
+
+@media only screen and (min-width: 992px) {
+    .main, footer {
+        padding-left: 300px;
+    }
+}
+
+.black-text {
+    color: #000000 !important;
+}
+.white-text {
+    color: #ffffff !important;
+}
