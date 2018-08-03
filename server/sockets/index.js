@@ -16,24 +16,20 @@ io.on('connection', (client) => {
 
         user.addPerson( client.id, data.name, data.channel )
 
-        // const person = user.getPerson(client.id)
-
         client.broadcast.to(data.channel).emit('listenPersons', user.getPersonsPerChannel(data.channel) )
-        // client.broadcast.emit('listenPersons', {
-        //     user: 'Admin',
-        //     message: `${person.name} se ha unido al chat`
-        // })
 
         callback(user.getPersonsPerChannel(data.channel))
     })
 
-    client.on('createMessage', (data) => {
+    client.on('createMessage', (data, callback) => {
 
         const person = user.getPerson(client.id)
 
         const message = createMessage(person.name, data.message)
 
         client.broadcast.to(person.channel).emit('createMessage', message)
+
+        callback(message )
     })
 
     client.on('disconnect', () => {
@@ -43,7 +39,9 @@ io.on('connection', (client) => {
             client.broadcast.to(personDeleted.channel).emit('createMessage', createMessage('Admin', `${personDeleted.name} salió`))
         }
 
-        client.broadcast.to(personDeleted.channel).emit('listenPersons', user.getPersonsPerChannel(personDeleted.channel))
+        if (personDeleted) {
+            client.broadcast.to(personDeleted.channel).emit('listenPersons', user.getPersonsPerChannel(personDeleted.channel))
+        }
     })
 
     // private messages 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <title>Chat</title>
 </head>
 <body>
@@ -16,7 +17,9 @@
         <div class="navbar-fixed">
             <nav class="header">
                 <div class="nav-wrapper">
-                    <span class="brand-logo padding">Sala de chat</span>
+                    <div id="channel-name">
+                        <span class="brand-logo padding">Chat <span class="name-channel"></span></span>
+                    </div>
                     <a href="#" data-target="slide-out" class="sidenav-trigger">
                         <span class="new badge blue" data-badge-caption="">115</span>
                         <i class="material-icons black-text">group</i>
@@ -25,36 +28,61 @@
             </nav>
         </div>
 
-        <div class="padding">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Card Title</span>
-                    
-                </div>
-                <div class="card-action">
-                    <!-- <a href="#">This is a link</a> -->
-                </div>
+        <div class="padding" id="chatBox">
+            <div class="chat-message">
+                <img class="circle" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait1.jpg?18355964117902265498" alt="avatar">
+                <p>
+                    <b>Andys</b> <span class="time">10:00</span>
+                </p>
+                Lo-fi you probably haven't heard of them etsy leggings raclette kickstarter four dollar toast. Raw denim fingerstache food
+                truck chia health goth synth. Forage man bun intelligentsia freegan PBR&amp;B banh mi asymmetrical chambray.
+        
+            </div>
+        
+            <div class="chat-message right">
+                <img class="circle" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait2.jpg?18355964117902265498" alt="avatar">
+                <p class="name-right">
+                    <b>Lorenz</b> <span class="time">10:00</span>
+                </p>
+                Lo-fi you probably haven't heard of them.
+            </div>
+        
+            <!-- <div class="chat-message right coalesce">
+                etsy leggings raclette kickstarter four dollar toast.
+            </div> -->
+        </div>
+
+        <div class="message">
+            <div class="row">
+                <form id="formSend" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <input autocomplete="off" id="txtMessage" class="materialize-textarea" placeholder="Escribe tu mensaje..." data-length="140" maxlength="140" autofocus>
+                        </div>
+                        <div class="input-field col s1 center-align">
+                            <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">send</i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
         
     <ul id="slide-out" class="sidenav sidenav-fixed contacts">
-        <nav class="transparent">
-            <div class="nav-wrapper padding">
-                <span class="brand-logo padding">Contactos</span>
-                <a href="#" class="show-on-medium-and-down hide-on-med-and-up sidenav-close">
-                    <i class="material-icons white-text">arrow_back</i>
-                </a>
-            </div>
-        </nav>
-        <li>
-        </li>
+        <div class="navbar-fixed">
+            <nav class="transparent">
+                <div class="nav-wrapper padding">
+                    <span class="brand-logo padding">Contactos</span>
+                    <a href="#" class="show-on-medium-and-down hide-on-med-and-up sidenav-close">
+                        <i class="material-icons white-text">arrow_back</i>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div id="divUsers">
+            <li class="center-align">Cargando...</li>
+        </div>
     </ul>
-    
-
-    <div class="message">
-
-    </div>
     
     
     <!-- Modal Structure -->
@@ -78,7 +106,7 @@
         </div>
     </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script src="socket.io/socket.io.js"></script>
     <script src="js/index.js"></script>

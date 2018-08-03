@@ -29,7 +29,9 @@ socket.on('connect', function() {
         if ( ! res.ok && res.message === 'channel is required') {
             instances2.open();
         }
-        console.log('Usuarios conectados ', res )
+        // console.log('Usuarios conectados ', res )
+        renderUser(res)
+        renderChannel()
     })
 })
 
@@ -37,20 +39,17 @@ socket.on('disconnect', function() {
     console.log('Connection missing with server')
 })
 
-// emit/send message 
-// socket.emit('createMessage', {
-// 	message: 'Hola a todos'
-// })
-
 // listen information
 socket.on('createMessage', function(msg) {
-    if (msg.length) {
-        console.log('servidor', msg);
+    if (msg) {
+        // console.log('servidor', msg);
+        renderMessages( msg )
     }
 })
 
 socket.on('listenPersons', function(persons) {
-    console.log( persons );
+    // console.log( persons );
+    renderUser(persons)
 })
 
 // private messages
