@@ -17,6 +17,7 @@ var channelName = $('#channel-name')
 var formSend = $('#formSend')
 var txtMessage = $('#txtMessage')
 var chatBox = $('#chatBox')
+var sidenavTrigger = $('#sidenav-trigger')
 
 function renderChannel() {
     var html = '';
@@ -27,16 +28,26 @@ function renderChannel() {
 }
 
 function renderUser(persons) {
-
-    console.log(persons);
+    
+    counterPersons(persons)
 
     var usersHtml = '';
 
     for (var i = 0; i < persons.length; i++) {
-        usersHtml += '<li><a data-id="' + persons[i].id + '" href="#!"><i class="material-icons">person</i>' + persons[i].name + '</a></li>';
+        usersHtml += '<li><a data-id="' + persons[i].id + '" href="javascript:void(0)"><i class="material-icons">person</i>' + persons[i].name + '</a></li>';
     }
 
     divUsers.html(usersHtml);
+}
+
+function counterPersons(persons) {
+
+    var html = ''
+
+    html += '<span class="new badge blue" data-badge-caption="">' + persons.length + '</span>'
+    html += '<i class="material-icons black-text">group</i>'
+
+    sidenavTrigger.html(html)
 }
 
 function renderMessages( message, me ) {
@@ -46,17 +57,25 @@ function renderMessages( message, me ) {
     var date = new Date(message.date)
     var hour = date.getHours() + ':' + date.getMinutes()
 
+    var adminClass = 'info'
+
     if ( me ) {
         html += '<div class="chat-message right">'
-        html += '    <img class="circle" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait2.jpg?18355964117902265498" alt="avatar">'
+        html += '    <img class="circle responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait2.jpg?18355964117902265498" alt="avatar">'
         html += '    <p class="name-right">'
         html += '        <b>' + message.name + '</b> <span class="time">' + hour + '</span>'
         html += '    </p>'
         html += message.message;
         html += '</div>'
+    }else if (message.name === 'Admin') {
+        
+        html += '<div class="admin-info">'
+        html += message.message + ' <span class="time">' + hour + '</span>';
+        html += '</div>'
+
     } else {
-        html += '<div class="chat-message animated fadeIn">'
-        html += '    <img class="circle" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait1.jpg?18355964117902265498" alt="avatar">'
+        html += '<div class="chat-message animated fadeIn ' + adminClass + '">'
+        html += '    <img class="circle responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait1.jpg?18355964117902265498" alt="avatar">'
         html += '    <p>'
         html += '        <b>' + message.name + '</b> <span class="time">' + hour + '</span>'
         html += '    </p>'
@@ -67,6 +86,23 @@ function renderMessages( message, me ) {
     
 
     chatBox.append(html)
+}
+
+function scrollBottom() {
+
+    // selectors
+    var newMessage = chatBox.children('div:last-child');
+
+    // heights
+    var clientHeight = chatBox.prop('clientHeight');
+    var scrollTop = chatBox.prop('scrollTop');
+    var scrollHeight = chatBox.prop('scrollHeight');
+    var newMessageHeight = newMessage.innerHeight();
+    var lastMessageHeight = newMessage.prev().innerHeight() || 0;
+
+    if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
+        chatBox.scrollTop(scrollHeight);
+    }
 }
 
 
@@ -89,6 +125,7 @@ formSend.on('submit', function(e) {
         }, function(message) {
             txtMessage.val('').focus()
             renderMessages( message, true )
+            scrollBottom()
         })
 
     }

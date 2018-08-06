@@ -18,6 +18,8 @@ io.on('connection', (client) => {
 
         client.broadcast.to(data.channel).emit('listenPersons', user.getPersonsPerChannel(data.channel) )
 
+        client.broadcast.to(data.channel).emit('createMessage', createMessage('Admin', `<b> ${data.name} </b> se unió`))
+
         callback(user.getPersonsPerChannel(data.channel))
     })
 
@@ -36,7 +38,7 @@ io.on('connection', (client) => {
         const personDeleted = user.deletePerson( client.id )
 
         if (personDeleted) {
-            client.broadcast.to(personDeleted.channel).emit('createMessage', createMessage('Admin', `${personDeleted.name} salió`))
+            client.broadcast.to(personDeleted.channel).emit('createMessage', createMessage('Admin', `<b> ${personDeleted.name} </b> salió`))
         }
 
         if (personDeleted) {

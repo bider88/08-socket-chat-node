@@ -44,6 +44,7 @@ socket.on('createMessage', function(msg) {
     if (msg) {
         // console.log('servidor', msg);
         renderMessages( msg )
+        scrollBottom()
     }
 })
 

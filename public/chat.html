@@ -20,16 +20,16 @@
                     <div id="channel-name">
                         <span class="brand-logo padding">Chat <span class="name-channel"></span></span>
                     </div>
-                    <a href="#" data-target="slide-out" class="sidenav-trigger">
-                        <span class="new badge blue" data-badge-caption="">115</span>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger" id="sidenav-trigger">
+                        <span class="new badge blue" data-badge-caption="">1</span>
                         <i class="material-icons black-text">group</i>
                     </a>
                 </div>
             </nav>
         </div>
 
-        <div class="padding" id="chatBox">
-            <div class="chat-message">
+        <div class="chatBox padding" id="chatBox">
+            <!-- <div class="chat-message">
                 <img class="circle" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/portrait1.jpg?18355964117902265498" alt="avatar">
                 <p>
                     <b>Andys</b> <span class="time">10:00</span>
@@ -45,30 +45,24 @@
                     <b>Lorenz</b> <span class="time">10:00</span>
                 </p>
                 Lo-fi you probably haven't heard of them.
-            </div>
+            </div> -->
         
             <!-- <div class="chat-message right coalesce">
                 etsy leggings raclette kickstarter four dollar toast.
             </div> -->
         </div>
 
-        <div class="message">
-            <div class="row">
-                <form id="formSend" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s11">
-                            <input autocomplete="off" id="txtMessage" class="materialize-textarea" placeholder="Escribe tu mensaje..." data-length="140" maxlength="140" autofocus>
-                        </div>
-                        <div class="input-field col s1 center-align">
-                            <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">send</i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="message padding">
+            <form id="formSend" class="form-message">
+                <input autocomplete="off" id="txtMessage" class="materialize-textarea" placeholder="Escribe tu mensaje..." data-length="140" maxlength="140" autofocus>
+                <div class="div-btn-floating">
+                    <button type="submit" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">send</i></button>
+                </div>
+            </form>
         </div>
     </div>
         
-    <ul id="slide-out" class="sidenav sidenav-fixed contacts">
+    <ul id="slide-out" class="sidenav sidenav-fixed contacts z-depth-2">
         <div class="navbar-fixed">
             <nav class="transparent">
                 <div class="nav-wrapper padding">
@@ -92,7 +86,7 @@
             <p>El nombre del usuario es requerido. Agregue uno por favor</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
         </div>
     </div>
 
@@ -102,7 +96,7 @@
             <p>La sala es requerida. Agregue una por favor</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+            <a href="javascript:void(0)" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
         </div>
     </div>
 
